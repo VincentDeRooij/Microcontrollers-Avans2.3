@@ -6,7 +6,7 @@
  */
 
 /**
- * \mainpage User Application template doxygen documentation
+ * \main page User Application template doxygen documentation
  *
  * \par Empty user application template
  *
@@ -29,6 +29,7 @@
  * Support and FAQ: visit <a href="https://www.microchip.com/support/">Microchip Support</a>
  */
 #include <asf.h>
+#define BIT(x) (1<<(X)) // changes selected bit of the PORTx
 
 int main (void)
 {
@@ -38,3 +39,5 @@ int main (void)
 
 	/* Insert application code here, after the board has been initialized. */
 }
+
+// Answers Week 1 see Folder Week1, Week1.c
