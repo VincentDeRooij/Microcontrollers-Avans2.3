@@ -1,0 +1,591 @@
+
+week1.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000000  00800100  00800100  00000294  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         00000240  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .comment      00000030  00000000  00000000  00000294  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000002c4  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000078  00000000  00000000  00000304  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00000bc6  00000000  00000000  0000037c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 00000953  00000000  00000000  00000f42  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   00000bc1  00000000  00000000  00001895  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  000000d8  00000000  00000000  00002458  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    00011f91  00000000  00000000  00002530  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    000002e7  00000000  00000000  000144c1  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000058  00000000  00000000  000147a8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_macro  00003ae3  00000000  00000000  00014800  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	45 c0       	rjmp	.+138    	; 0x8c <__ctors_end>
+   2:	00 00       	nop
+   4:	58 c0       	rjmp	.+176    	; 0xb6 <__bad_interrupt>
+   6:	00 00       	nop
+   8:	56 c0       	rjmp	.+172    	; 0xb6 <__bad_interrupt>
+   a:	00 00       	nop
+   c:	54 c0       	rjmp	.+168    	; 0xb6 <__bad_interrupt>
+   e:	00 00       	nop
+  10:	52 c0       	rjmp	.+164    	; 0xb6 <__bad_interrupt>
+  12:	00 00       	nop
+  14:	50 c0       	rjmp	.+160    	; 0xb6 <__bad_interrupt>
+  16:	00 00       	nop
+  18:	4e c0       	rjmp	.+156    	; 0xb6 <__bad_interrupt>
+  1a:	00 00       	nop
+  1c:	4c c0       	rjmp	.+152    	; 0xb6 <__bad_interrupt>
+  1e:	00 00       	nop
+  20:	4a c0       	rjmp	.+148    	; 0xb6 <__bad_interrupt>
+  22:	00 00       	nop
+  24:	48 c0       	rjmp	.+144    	; 0xb6 <__bad_interrupt>
+  26:	00 00       	nop
+  28:	46 c0       	rjmp	.+140    	; 0xb6 <__bad_interrupt>
+  2a:	00 00       	nop
+  2c:	44 c0       	rjmp	.+136    	; 0xb6 <__bad_interrupt>
+  2e:	00 00       	nop
+  30:	42 c0       	rjmp	.+132    	; 0xb6 <__bad_interrupt>
+  32:	00 00       	nop
+  34:	40 c0       	rjmp	.+128    	; 0xb6 <__bad_interrupt>
+  36:	00 00       	nop
+  38:	3e c0       	rjmp	.+124    	; 0xb6 <__bad_interrupt>
+  3a:	00 00       	nop
+  3c:	3c c0       	rjmp	.+120    	; 0xb6 <__bad_interrupt>
+  3e:	00 00       	nop
+  40:	3a c0       	rjmp	.+116    	; 0xb6 <__bad_interrupt>
+  42:	00 00       	nop
+  44:	38 c0       	rjmp	.+112    	; 0xb6 <__bad_interrupt>
+  46:	00 00       	nop
+  48:	36 c0       	rjmp	.+108    	; 0xb6 <__bad_interrupt>
+  4a:	00 00       	nop
+  4c:	34 c0       	rjmp	.+104    	; 0xb6 <__bad_interrupt>
+  4e:	00 00       	nop
+  50:	32 c0       	rjmp	.+100    	; 0xb6 <__bad_interrupt>
+  52:	00 00       	nop
+  54:	30 c0       	rjmp	.+96     	; 0xb6 <__bad_interrupt>
+  56:	00 00       	nop
+  58:	2e c0       	rjmp	.+92     	; 0xb6 <__bad_interrupt>
+  5a:	00 00       	nop
+  5c:	2c c0       	rjmp	.+88     	; 0xb6 <__bad_interrupt>
+  5e:	00 00       	nop
+  60:	2a c0       	rjmp	.+84     	; 0xb6 <__bad_interrupt>
+  62:	00 00       	nop
+  64:	28 c0       	rjmp	.+80     	; 0xb6 <__bad_interrupt>
+  66:	00 00       	nop
+  68:	26 c0       	rjmp	.+76     	; 0xb6 <__bad_interrupt>
+  6a:	00 00       	nop
+  6c:	24 c0       	rjmp	.+72     	; 0xb6 <__bad_interrupt>
+  6e:	00 00       	nop
+  70:	22 c0       	rjmp	.+68     	; 0xb6 <__bad_interrupt>
+  72:	00 00       	nop
+  74:	20 c0       	rjmp	.+64     	; 0xb6 <__bad_interrupt>
+  76:	00 00       	nop
+  78:	1e c0       	rjmp	.+60     	; 0xb6 <__bad_interrupt>
+  7a:	00 00       	nop
+  7c:	1c c0       	rjmp	.+56     	; 0xb6 <__bad_interrupt>
+  7e:	00 00       	nop
+  80:	1a c0       	rjmp	.+52     	; 0xb6 <__bad_interrupt>
+  82:	00 00       	nop
+  84:	18 c0       	rjmp	.+48     	; 0xb6 <__bad_interrupt>
+  86:	00 00       	nop
+  88:	16 c0       	rjmp	.+44     	; 0xb6 <__bad_interrupt>
+	...
+
+0000008c <__ctors_end>:
+  8c:	11 24       	eor	r1, r1
+  8e:	1f be       	out	0x3f, r1	; 63
+  90:	cf ef       	ldi	r28, 0xFF	; 255
+  92:	d0 e1       	ldi	r29, 0x10	; 16
+  94:	de bf       	out	0x3e, r29	; 62
+  96:	cd bf       	out	0x3d, r28	; 61
+
+00000098 <__do_copy_data>:
+  98:	11 e0       	ldi	r17, 0x01	; 1
+  9a:	a0 e0       	ldi	r26, 0x00	; 0
+  9c:	b1 e0       	ldi	r27, 0x01	; 1
+  9e:	e0 e4       	ldi	r30, 0x40	; 64
+  a0:	f2 e0       	ldi	r31, 0x02	; 2
+  a2:	00 e0       	ldi	r16, 0x00	; 0
+  a4:	0b bf       	out	0x3b, r16	; 59
+  a6:	02 c0       	rjmp	.+4      	; 0xac <__do_copy_data+0x14>
+  a8:	07 90       	elpm	r0, Z+
+  aa:	0d 92       	st	X+, r0
+  ac:	a0 30       	cpi	r26, 0x00	; 0
+  ae:	b1 07       	cpc	r27, r17
+  b0:	d9 f7       	brne	.-10     	; 0xa8 <__do_copy_data+0x10>
+  b2:	bf d0       	rcall	.+382    	; 0x232 <main>
+  b4:	c3 c0       	rjmp	.+390    	; 0x23c <_exit>
+
+000000b6 <__bad_interrupt>:
+  b6:	a4 cf       	rjmp	.-184    	; 0x0 <__vectors>
+
+000000b8 <board_init>:
+#include <asf.h>
+#include <board.h>
+#include <conf_board.h>
+
+void board_init(void)
+{
+  b8:	08 95       	ret
+
+000000ba <wait>:
+			}
+		}
+		PORTD ^= BIT(7);
+		wait(delay);
+		
+	}
+  ba:	18 16       	cp	r1, r24
+  bc:	19 06       	cpc	r1, r25
+  be:	6c f4       	brge	.+26     	; 0xda <wait+0x20>
+  c0:	20 e0       	ldi	r18, 0x00	; 0
+  c2:	30 e0       	ldi	r19, 0x00	; 0
+  c4:	ef ec       	ldi	r30, 0xCF	; 207
+  c6:	f7 e0       	ldi	r31, 0x07	; 7
+  c8:	31 97       	sbiw	r30, 0x01	; 1
+  ca:	f1 f7       	brne	.-4      	; 0xc8 <wait+0xe>
+  cc:	00 c0       	rjmp	.+0      	; 0xce <wait+0x14>
+  ce:	00 00       	nop
+  d0:	2f 5f       	subi	r18, 0xFF	; 255
+  d2:	3f 4f       	sbci	r19, 0xFF	; 255
+  d4:	82 17       	cp	r24, r18
+  d6:	93 07       	cpc	r25, r19
+  d8:	a9 f7       	brne	.-22     	; 0xc4 <wait+0xa>
+  da:	08 95       	ret
+
+000000dc <opdrachtB7>:
+}
+
+void opdrachtB7() {
+	DDRA = 0b11111111;
+  dc:	8f ef       	ldi	r24, 0xFF	; 255
+  de:	8a bb       	out	0x1a, r24	; 26
+	DDRB = 0b11111111;
+  e0:	87 bb       	out	0x17, r24	; 23
+	DDRC = 0b11111111;
+  e2:	84 bb       	out	0x14, r24	; 20
+	DDRD = 0b00000000;
+  e4:	11 ba       	out	0x11, r1	; 17
+	typedef enum {START, STATE1, STATE2, STATE3, END} ENUM_STATES;
+	typedef enum {D5, D6, D7, NONE} ENUM_BUTTONS;
+	//ENUM_STATES state = ENUM_STATES.START;
+	ENUM_STATES currentstate = START;
+  e6:	c0 e0       	ldi	r28, 0x00	; 0
+		{
+		case 0b00100000:
+			btnpressed = D5;
+			break;
+		case 0b01000000:
+			btnpressed = D6;
+  e8:	11 e0       	ldi	r17, 0x01	; 1
+			
+		case END:
+			if (btnpressed == D7) {
+				currentstate = START;
+			}
+			PORTA = 0b10000000;
+  ea:	68 94       	set
+  ec:	cc 24       	eor	r12, r12
+  ee:	c7 f8       	bld	r12, 7
+  f0:	04 e0       	ldi	r16, 0x04	; 4
+			PORTA = 0b00001000;
+			break;
+			
+		case END:
+			if (btnpressed == D7) {
+				currentstate = START;
+  f2:	e1 2c       	mov	r14, r1
+			} else if (btnpressed == D6) {
+				currentstate = END;
+			} else if (btnpressed == D7) {
+				currentstate = START;
+			}
+			PORTA = 0b00001000;
+  f4:	68 94       	set
+  f6:	dd 24       	eor	r13, r13
+  f8:	d3 f8       	bld	r13, 3
+  fa:	0f 2e       	mov	r0, r31
+  fc:	f3 e0       	ldi	r31, 0x03	; 3
+  fe:	ff 2e       	mov	r15, r31
+ 100:	f0 2d       	mov	r31, r0
+ 102:	d2 e0       	ldi	r29, 0x02	; 2
+	while (true) {
+		//PORTA = 0b11111111;
+		//PORTB = 0b11111111;
+		//PORTC = 0b11111111;
+		//PORTD = 0b11111111;
+		switch (PIND)
+ 104:	80 b3       	in	r24, 0x10	; 16
+ 106:	80 34       	cpi	r24, 0x40	; 64
+ 108:	09 f4       	brne	.+2      	; 0x10c <opdrachtB7+0x30>
+ 10a:	63 c0       	rjmp	.+198    	; 0x1d2 <opdrachtB7+0xf6>
+ 10c:	80 38       	cpi	r24, 0x80	; 128
+ 10e:	09 f4       	brne	.+2      	; 0x112 <opdrachtB7+0x36>
+ 110:	7f c0       	rjmp	.+254    	; 0x210 <opdrachtB7+0x134>
+ 112:	80 32       	cpi	r24, 0x20	; 32
+ 114:	09 f0       	breq	.+2      	; 0x118 <opdrachtB7+0x3c>
+ 116:	6c c0       	rjmp	.+216    	; 0x1f0 <opdrachtB7+0x114>
+		default:
+			btnpressed = NONE;
+			break;
+		}
+		
+		switch (currentstate)
+ 118:	c2 30       	cpi	r28, 0x02	; 2
+ 11a:	11 f1       	breq	.+68     	; 0x160 <opdrachtB7+0x84>
+ 11c:	28 f4       	brcc	.+10     	; 0x128 <opdrachtB7+0x4c>
+ 11e:	cc 23       	and	r28, r28
+ 120:	49 f0       	breq	.+18     	; 0x134 <opdrachtB7+0x58>
+ 122:	c1 30       	cpi	r28, 0x01	; 1
+ 124:	61 f0       	breq	.+24     	; 0x13e <opdrachtB7+0x62>
+ 126:	51 c0       	rjmp	.+162    	; 0x1ca <opdrachtB7+0xee>
+ 128:	c3 30       	cpi	r28, 0x03	; 3
+ 12a:	81 f1       	breq	.+96     	; 0x18c <opdrachtB7+0xb0>
+ 12c:	c4 30       	cpi	r28, 0x04	; 4
+ 12e:	09 f4       	brne	.+2      	; 0x132 <opdrachtB7+0x56>
+ 130:	3f c0       	rjmp	.+126    	; 0x1b0 <opdrachtB7+0xd4>
+ 132:	4b c0       	rjmp	.+150    	; 0x1ca <opdrachtB7+0xee>
+		{
+		case START:
+			if (btnpressed == D5) {
+				currentstate = STATE2;
+ 134:	cd 2f       	mov	r28, r29
+ 136:	01 c0       	rjmp	.+2      	; 0x13a <opdrachtB7+0x5e>
+			} else if (btnpressed == D6) {
+				currentstate = STATE1;
+ 138:	c1 2f       	mov	r28, r17
+			}
+			PORTA = 0b00000001;
+ 13a:	1b bb       	out	0x1b, r17	; 27
+			break;
+ 13c:	46 c0       	rjmp	.+140    	; 0x1ca <opdrachtB7+0xee>
+		//PORTC = 0b11111111;
+		//PORTD = 0b11111111;
+		switch (PIND)
+		{
+		case 0b00100000:
+			btnpressed = D5;
+ 13e:	8e 2d       	mov	r24, r14
+ 140:	03 c0       	rjmp	.+6      	; 0x148 <opdrachtB7+0x6c>
+			break;
+		case 0b01000000:
+			btnpressed = D6;
+ 142:	81 2f       	mov	r24, r17
+ 144:	01 c0       	rjmp	.+2      	; 0x148 <opdrachtB7+0x6c>
+			break;
+		case 0b10000000:
+			btnpressed = D7;
+			break;
+		default:
+			btnpressed = NONE;
+ 146:	8f 2d       	mov	r24, r15
+			}
+			PORTA = 0b00000001;
+			break;
+			
+		case STATE1:
+			if (btnpressed == D5) {
+ 148:	88 23       	and	r24, r24
+ 14a:	39 f0       	breq	.+14     	; 0x15a <opdrachtB7+0x7e>
+ 14c:	01 c0       	rjmp	.+2      	; 0x150 <opdrachtB7+0x74>
+			break;
+		case 0b01000000:
+			btnpressed = D6;
+			break;
+		case 0b10000000:
+			btnpressed = D7;
+ 14e:	8d 2f       	mov	r24, r29
+			PORTA = 0b00000001;
+			break;
+			
+		case STATE1:
+			if (btnpressed == D5) {
+				currentstate = STATE2;
+ 150:	c1 2f       	mov	r28, r17
+ 152:	82 30       	cpi	r24, 0x02	; 2
+ 154:	19 f4       	brne	.+6      	; 0x15c <opdrachtB7+0x80>
+ 156:	ce 2d       	mov	r28, r14
+ 158:	01 c0       	rjmp	.+2      	; 0x15c <opdrachtB7+0x80>
+ 15a:	cd 2f       	mov	r28, r29
+			} else if (btnpressed == D7) {
+				currentstate = START;
+			}
+			PORTA = 0b00000010;
+ 15c:	db bb       	out	0x1b, r29	; 27
+			break;
+ 15e:	35 c0       	rjmp	.+106    	; 0x1ca <opdrachtB7+0xee>
+		//PORTC = 0b11111111;
+		//PORTD = 0b11111111;
+		switch (PIND)
+		{
+		case 0b00100000:
+			btnpressed = D5;
+ 160:	8e 2d       	mov	r24, r14
+ 162:	05 c0       	rjmp	.+10     	; 0x16e <opdrachtB7+0x92>
+			break;
+		case 0b01000000:
+			btnpressed = D6;
+ 164:	81 2f       	mov	r24, r17
+ 166:	03 c0       	rjmp	.+6      	; 0x16e <opdrachtB7+0x92>
+			break;
+		case 0b10000000:
+			btnpressed = D7;
+			break;
+		default:
+			btnpressed = NONE;
+ 168:	8f 2d       	mov	r24, r15
+ 16a:	01 c0       	rjmp	.+2      	; 0x16e <opdrachtB7+0x92>
+			break;
+		case 0b01000000:
+			btnpressed = D6;
+			break;
+		case 0b10000000:
+			btnpressed = D7;
+ 16c:	8d 2f       	mov	r24, r29
+			}
+			PORTA = 0b00000010;
+			break;
+			
+		case STATE2:
+			if (btnpressed == D5) {
+ 16e:	88 23       	and	r24, r24
+ 170:	31 f0       	breq	.+12     	; 0x17e <opdrachtB7+0xa2>
+				currentstate = STATE3;
+			} else if (btnpressed == D6) {
+ 172:	81 30       	cpi	r24, 0x01	; 1
+ 174:	31 f0       	breq	.+12     	; 0x182 <opdrachtB7+0xa6>
+				currentstate = STATE1;
+			} else if (btnpressed == D7) {
+ 176:	82 30       	cpi	r24, 0x02	; 2
+ 178:	31 f4       	brne	.+12     	; 0x186 <opdrachtB7+0xaa>
+				currentstate = START;
+ 17a:	ce 2d       	mov	r28, r14
+ 17c:	05 c0       	rjmp	.+10     	; 0x188 <opdrachtB7+0xac>
+			PORTA = 0b00000010;
+			break;
+			
+		case STATE2:
+			if (btnpressed == D5) {
+				currentstate = STATE3;
+ 17e:	cf 2d       	mov	r28, r15
+ 180:	03 c0       	rjmp	.+6      	; 0x188 <opdrachtB7+0xac>
+			} else if (btnpressed == D6) {
+				currentstate = STATE1;
+ 182:	c1 2f       	mov	r28, r17
+ 184:	01 c0       	rjmp	.+2      	; 0x188 <opdrachtB7+0xac>
+ 186:	cd 2f       	mov	r28, r29
+			} else if (btnpressed == D7) {
+				currentstate = START;
+			}
+			PORTA = 0b00000100;
+ 188:	0b bb       	out	0x1b, r16	; 27
+			break;
+ 18a:	1f c0       	rjmp	.+62     	; 0x1ca <opdrachtB7+0xee>
+		//PORTC = 0b11111111;
+		//PORTD = 0b11111111;
+		switch (PIND)
+		{
+		case 0b00100000:
+			btnpressed = D5;
+ 18c:	8e 2d       	mov	r24, r14
+ 18e:	05 c0       	rjmp	.+10     	; 0x19a <opdrachtB7+0xbe>
+			break;
+		case 0b01000000:
+			btnpressed = D6;
+ 190:	81 2f       	mov	r24, r17
+ 192:	03 c0       	rjmp	.+6      	; 0x19a <opdrachtB7+0xbe>
+			break;
+		case 0b10000000:
+			btnpressed = D7;
+			break;
+		default:
+			btnpressed = NONE;
+ 194:	8f 2d       	mov	r24, r15
+ 196:	01 c0       	rjmp	.+2      	; 0x19a <opdrachtB7+0xbe>
+			break;
+		case 0b01000000:
+			btnpressed = D6;
+			break;
+		case 0b10000000:
+			btnpressed = D7;
+ 198:	8d 2f       	mov	r24, r29
+			}
+			PORTA = 0b00000100;
+			break;
+			
+		case STATE3:
+			if (btnpressed == D5) {
+ 19a:	82 30       	cpi	r24, 0x02	; 2
+ 19c:	20 f0       	brcs	.+8      	; 0x1a6 <opdrachtB7+0xca>
+				currentstate = END;
+			} else if (btnpressed == D6) {
+				currentstate = END;
+			} else if (btnpressed == D7) {
+ 19e:	82 30       	cpi	r24, 0x02	; 2
+ 1a0:	21 f4       	brne	.+8      	; 0x1aa <opdrachtB7+0xce>
+				currentstate = START;
+ 1a2:	ce 2d       	mov	r28, r14
+ 1a4:	03 c0       	rjmp	.+6      	; 0x1ac <opdrachtB7+0xd0>
+			PORTA = 0b00000100;
+			break;
+			
+		case STATE3:
+			if (btnpressed == D5) {
+				currentstate = END;
+ 1a6:	c0 2f       	mov	r28, r16
+ 1a8:	01 c0       	rjmp	.+2      	; 0x1ac <opdrachtB7+0xd0>
+ 1aa:	cf 2d       	mov	r28, r15
+			} else if (btnpressed == D6) {
+				currentstate = END;
+			} else if (btnpressed == D7) {
+				currentstate = START;
+			}
+			PORTA = 0b00001000;
+ 1ac:	db ba       	out	0x1b, r13	; 27
+			break;
+ 1ae:	0d c0       	rjmp	.+26     	; 0x1ca <opdrachtB7+0xee>
+		//PORTC = 0b11111111;
+		//PORTD = 0b11111111;
+		switch (PIND)
+		{
+		case 0b00100000:
+			btnpressed = D5;
+ 1b0:	8e 2d       	mov	r24, r14
+ 1b2:	05 c0       	rjmp	.+10     	; 0x1be <opdrachtB7+0xe2>
+			break;
+		case 0b01000000:
+			btnpressed = D6;
+ 1b4:	81 2f       	mov	r24, r17
+ 1b6:	03 c0       	rjmp	.+6      	; 0x1be <opdrachtB7+0xe2>
+			break;
+		case 0b10000000:
+			btnpressed = D7;
+			break;
+		default:
+			btnpressed = NONE;
+ 1b8:	8f 2d       	mov	r24, r15
+ 1ba:	01 c0       	rjmp	.+2      	; 0x1be <opdrachtB7+0xe2>
+			break;
+		case 0b01000000:
+			btnpressed = D6;
+			break;
+		case 0b10000000:
+			btnpressed = D7;
+ 1bc:	8d 2f       	mov	r24, r29
+			}
+			PORTA = 0b00001000;
+			break;
+			
+		case END:
+			if (btnpressed == D7) {
+ 1be:	82 30       	cpi	r24, 0x02	; 2
+ 1c0:	11 f4       	brne	.+4      	; 0x1c6 <opdrachtB7+0xea>
+				currentstate = START;
+ 1c2:	ce 2d       	mov	r28, r14
+ 1c4:	01 c0       	rjmp	.+2      	; 0x1c8 <opdrachtB7+0xec>
+ 1c6:	c0 2f       	mov	r28, r16
+			}
+			PORTA = 0b10000000;
+ 1c8:	cb ba       	out	0x1b, r12	; 27
+			break;
+		}
+		wait(300);
+ 1ca:	8c e2       	ldi	r24, 0x2C	; 44
+ 1cc:	91 e0       	ldi	r25, 0x01	; 1
+ 1ce:	75 df       	rcall	.-278    	; 0xba <wait>
+	}
+ 1d0:	99 cf       	rjmp	.-206    	; 0x104 <opdrachtB7+0x28>
+		default:
+			btnpressed = NONE;
+			break;
+		}
+		
+		switch (currentstate)
+ 1d2:	c2 30       	cpi	r28, 0x02	; 2
+ 1d4:	39 f2       	breq	.-114    	; 0x164 <opdrachtB7+0x88>
+ 1d6:	38 f4       	brcc	.+14     	; 0x1e6 <opdrachtB7+0x10a>
+ 1d8:	cc 23       	and	r28, r28
+ 1da:	09 f4       	brne	.+2      	; 0x1de <opdrachtB7+0x102>
+ 1dc:	ad cf       	rjmp	.-166    	; 0x138 <opdrachtB7+0x5c>
+ 1de:	c1 30       	cpi	r28, 0x01	; 1
+ 1e0:	09 f4       	brne	.+2      	; 0x1e4 <opdrachtB7+0x108>
+ 1e2:	af cf       	rjmp	.-162    	; 0x142 <opdrachtB7+0x66>
+ 1e4:	f2 cf       	rjmp	.-28     	; 0x1ca <opdrachtB7+0xee>
+ 1e6:	c3 30       	cpi	r28, 0x03	; 3
+ 1e8:	99 f2       	breq	.-90     	; 0x190 <opdrachtB7+0xb4>
+ 1ea:	c4 30       	cpi	r28, 0x04	; 4
+ 1ec:	19 f3       	breq	.-58     	; 0x1b4 <opdrachtB7+0xd8>
+ 1ee:	ed cf       	rjmp	.-38     	; 0x1ca <opdrachtB7+0xee>
+ 1f0:	c2 30       	cpi	r28, 0x02	; 2
+ 1f2:	09 f4       	brne	.+2      	; 0x1f6 <opdrachtB7+0x11a>
+ 1f4:	b9 cf       	rjmp	.-142    	; 0x168 <opdrachtB7+0x8c>
+ 1f6:	38 f4       	brcc	.+14     	; 0x206 <opdrachtB7+0x12a>
+ 1f8:	cc 23       	and	r28, r28
+ 1fa:	09 f4       	brne	.+2      	; 0x1fe <opdrachtB7+0x122>
+ 1fc:	9e cf       	rjmp	.-196    	; 0x13a <opdrachtB7+0x5e>
+ 1fe:	c1 30       	cpi	r28, 0x01	; 1
+ 200:	09 f4       	brne	.+2      	; 0x204 <opdrachtB7+0x128>
+ 202:	a1 cf       	rjmp	.-190    	; 0x146 <opdrachtB7+0x6a>
+ 204:	e2 cf       	rjmp	.-60     	; 0x1ca <opdrachtB7+0xee>
+ 206:	c3 30       	cpi	r28, 0x03	; 3
+ 208:	29 f2       	breq	.-118    	; 0x194 <opdrachtB7+0xb8>
+ 20a:	c4 30       	cpi	r28, 0x04	; 4
+ 20c:	a9 f2       	breq	.-86     	; 0x1b8 <opdrachtB7+0xdc>
+ 20e:	dd cf       	rjmp	.-70     	; 0x1ca <opdrachtB7+0xee>
+ 210:	c2 30       	cpi	r28, 0x02	; 2
+ 212:	09 f4       	brne	.+2      	; 0x216 <opdrachtB7+0x13a>
+ 214:	ab cf       	rjmp	.-170    	; 0x16c <opdrachtB7+0x90>
+ 216:	38 f4       	brcc	.+14     	; 0x226 <opdrachtB7+0x14a>
+ 218:	cc 23       	and	r28, r28
+ 21a:	09 f4       	brne	.+2      	; 0x21e <opdrachtB7+0x142>
+ 21c:	8e cf       	rjmp	.-228    	; 0x13a <opdrachtB7+0x5e>
+ 21e:	c1 30       	cpi	r28, 0x01	; 1
+ 220:	09 f4       	brne	.+2      	; 0x224 <opdrachtB7+0x148>
+ 222:	95 cf       	rjmp	.-214    	; 0x14e <opdrachtB7+0x72>
+ 224:	d2 cf       	rjmp	.-92     	; 0x1ca <opdrachtB7+0xee>
+ 226:	c3 30       	cpi	r28, 0x03	; 3
+ 228:	09 f4       	brne	.+2      	; 0x22c <opdrachtB7+0x150>
+ 22a:	b6 cf       	rjmp	.-148    	; 0x198 <opdrachtB7+0xbc>
+ 22c:	c4 30       	cpi	r28, 0x04	; 4
+ 22e:	31 f2       	breq	.-116    	; 0x1bc <opdrachtB7+0xe0>
+ 230:	cc cf       	rjmp	.-104    	; 0x1ca <opdrachtB7+0xee>
+
+00000232 <main>:
+
+int main (void)
+{
+	/* Insert system clock initialization code here (sysclk_init()). */
+
+	board_init();
+ 232:	42 df       	rcall	.-380    	; 0xb8 <board_init>
+
+	/* Insert application code here, after the board has been initialized. */
+	
+	DDRC = 0b00000000;					// PORTC.7 input all other bits output
+ 234:	14 ba       	out	0x14, r1	; 20
+	DDRD = 0b11111111;
+ 236:	8f ef       	ldi	r24, 0xFF	; 255
+	
+	//opdrachtB6();
+	opdrachtB7();
+ 238:	81 bb       	out	0x11, r24	; 17
+ 23a:	50 df       	rcall	.-352    	; 0xdc <opdrachtB7>
+
+0000023c <_exit>:
+ 23c:	f8 94       	cli
+
+0000023e <__stop_program>:
+ 23e:	ff cf       	rjmp	.-2      	; 0x23e <__stop_program>
