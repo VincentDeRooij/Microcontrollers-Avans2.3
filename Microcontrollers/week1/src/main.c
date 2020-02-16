@@ -6,7 +6,7 @@
  */
 
 /**
- * \main page User Application template doxygen documentation
+ * \mainpage User Application template doxygen documentation
  *
  * \par Empty user application template
  *
