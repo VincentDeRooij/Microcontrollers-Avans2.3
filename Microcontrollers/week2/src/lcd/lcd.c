@@ -1,71 +1,170 @@
-/*
- * lcd.c
- *
- * Created: 05-02-2020 14:10:14
- *  Author: noahw
- */ 
+/* ---------------------------------------------------------------------------
+** This software is in the public domain, furnished "as is", without technical
+** support, and with no warranty, express or implied, as to its usefulness for
+** any purpose.
+**
+** ioisr.c
+**
+** Beschrijving:	BigAVR LCD module
+** Target:			AVR mcu
+** Build:			avr-gcc -std=c99 -Wall -O3 -mmcu=atmega128 -D F_CPU=8000000UL -c lcd.c
+**					avr-gcc -g -mmcu=atmega128 -o lcd.elf lcd.o
+**					avr-objcopy -O ihex lcd.elf lcd.hex
+**					or type 'make'
+** Author: 			dkroeske@gmail.com
+** -------------------------------------------------------------------------*/
 
-#include <stdio.h>
+
 #include <avr/io.h>
 #include <util/delay.h>
 #include <avr/interrupt.h>
 
-#define F_CPU 8000000UL
-#define BIT(x) (1<<(x))
+#define LCD_E 	3
+#define LCD_RS	2
 
-void init();
-void display_text(char *str);
-void set_cursor(int position);
-void lcd_command ( unsigned char dat );
-void lcd_writeChar( unsigned char dat );
+void lcd_strobe_lcd_e(void);
+void init_4bits_mode(void);
+void lcd_write_string(char *str);
+void lcd_write_data(unsigned char byte);
+void lcd_write_command(unsigned char byte);
 
-void init() {
-	// return home
-	lcd_command( 0x02 );
-	// mode: 4 bits interface data, 2 lines, 5x8 dots
-	lcd_command( 0x28 );
-	// display: on, cursor off, blinking off
-	lcd_command( 0x0C );
-	// entry mode: cursor to right, no shift
-	lcd_command( 0x06 );
-	// RAM adress: 0, first position, line 1
-	lcd_command( 0x80 );
-	
-	lcd_writeChar('F');
-}
-void display_text(char *str) {
-	
-}
-void set_cursor(int position) {
-	
-}
+void lcd_set_cursor(int row, int index);
+void lcd_overwrite_line(char *str, int row);
+void lcd_clear_screen();
 
-void lcd_writeChar( unsigned char dat )
+/******************************************************************/
+void lcd_strobe_lcd_e(void)
+/*
+short:			Strobe LCD module E pin --__
+inputs:
+outputs:
+notes:			According datasheet HD44780
+Version :    	DMK, Initial code
+*******************************************************************/
 {
-	PORTC = dat & 0xF0; // hoge nibble
-	PORTC = PORTC | 0x0C; // data (RS=1),
-	// start (EN=1)
-	_delay_ms(1); // wait 1 ms
-	PORTC = 0x04; // stop (EN = 0)
-	PORTC = (dat & 0x0F) << 4; // lage nibble
-	PORTC = PORTC | 0x0C; // data (RS=1),
-	// start (EN=1)
-	_delay_ms(1); // wait 1 ms
-	PORTC = 0x00; // stop
-	// (EN=0 RS=0)
+	PORTC |= (1<<LCD_E);	// E high
+	_delay_ms(1);			// nodig
+	PORTC &= ~(1<<LCD_E);  	// E low
+	_delay_ms(1);			// nodig?
 }
 
-void lcd_command ( unsigned char dat )
+/******************************************************************/
+void init_4bits_mode(void)
+/*
+short:			Init LCD module in 4 bits mode.
+inputs:
+outputs:
+notes:			According datasheet HD44780 table 12
+Version :    	DMK, Initial code
+*******************************************************************/
 {
-	PORTC = dat & 0xF0; // hoge nibble
-	PORTC = PORTC | 0x08; // data (RS=0),
-	// start (EN=1)
-	_delay_ms(1); // wait 1 ms
-	PORTC = 0x04; // stop (EN = 0)
-	PORTC = (dat & 0x0F) << 4; // lage nibble
-	PORTC = PORTC | 0x08; // data (RS=0),
-	// start (EN=1)
-	_delay_ms(1); // wait 1 ms
-	PORTC = 0x00; // stop
-	// (EN=0 RS=0)
+	// PORTC output mode and all low (also E and RS pin)
+	DDRC = 0xFF;
+	PORTC = 0x00;
+
+	// Step 2 (table 12)
+	PORTC = 0x20;	// function set
+	lcd_strobe_lcd_e();
+
+	// Step 3 (table 12)
+	PORTC = 0x20;   // function set
+	lcd_strobe_lcd_e();
+	PORTC = 0x80;
+	lcd_strobe_lcd_e();
+
+	// Step 4 (table 12)
+	PORTC = 0x00;   // Display on/off control
+	lcd_strobe_lcd_e();
+	PORTC = 0xF0;
+	lcd_strobe_lcd_e();
+
+	// Step 4 (table 12)
+	PORTC = 0x00;   // Entry mode set
+	lcd_strobe_lcd_e();
+	PORTC = 0x60;
+	lcd_strobe_lcd_e();
 }
+
+void lcd_clear_screen() {
+	lcd_write_command(0x01); //clear
+	lcd_write_command(0x02); //cursor and screen home
+}
+
+void lcd_overwrite_line(char *str, int row) {
+	lcd_set_cursor(row, 0); //set cursor
+	lcd_write_string("                "); //clear line
+	lcd_set_cursor(row, 0); //set cursor back to start
+	lcd_write_string(*str); //write new string
+}
+
+void lcd_set_cursor(int row, int index) {
+	int pos = (row * 40) + index;
+	lcd_write_command(0x80 + pos);
+}
+
+/******************************************************************/
+void lcd_write_string(char *str)
+/*
+short:			Writes string to LCD at cursor position
+inputs:
+outputs:
+notes:			According datasheet HD44780 table 12
+Version :    	DMK, Initial code
+*******************************************************************/
+{
+	// Het kan met een while:
+
+	// while(*str) {
+	// 	lcd_write_data(*str++);
+	// }
+
+	// of met een for:
+	for(;*str; str++){
+		lcd_write_data(*str);
+	}
+}
+
+
+/******************************************************************/
+void lcd_write_data(unsigned char byte)
+/*
+short:			Writes 8 bits DATA to lcd
+inputs:			byte - written to LCD
+outputs:
+notes:			According datasheet HD44780 table 12
+Version :    	DMK, Initial code
+*******************************************************************/
+{
+	// First nibble.
+	PORTC = byte;
+	PORTC |= (1<<LCD_RS);
+	lcd_strobe_lcd_e();
+
+	// Second nibble
+	PORTC = (byte<<4);
+	PORTC |= (1<<LCD_RS);
+	lcd_strobe_lcd_e();
+}
+
+/******************************************************************/
+void lcd_write_command(unsigned char byte)
+/*
+short:			Writes 8 bits COMMAND to lcd
+inputs:			byte - written to LCD
+outputs:
+notes:			According datasheet HD44780 table 12
+Version :    	DMK, Initial code
+*******************************************************************/
+{
+	// First nibble.
+	PORTC = byte;
+	PORTC &= ~(1<<LCD_RS);
+	lcd_strobe_lcd_e();
+
+	// Second nibble
+	PORTC = (byte<<4);
+	PORTC &= ~(1<<LCD_RS);
+	lcd_strobe_lcd_e();
+}
+
+

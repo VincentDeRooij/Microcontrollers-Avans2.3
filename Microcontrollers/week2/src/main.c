@@ -11,7 +11,14 @@ void opdrachtB4();
 void opdrachtB5();
 void displayDigit(int digit);
 void init();
-void lcd_writeChar( unsigned char dat );
+
+void lcd_write_string(char *str);
+void init_4bits_mode();
+void lcd_set_cursor(int row, int index);
+void lcd_overwrite_line(char *str, int row);
+void lcd_clear_screen();
+
+void lcd_write_command(unsigned char byte);
 
 const unsigned char PATTERN[] =
 {
@@ -51,21 +58,27 @@ ISR( INT1_vect )
 
 int main( void )
 {
-	//board_init();
 	// Init I/O
-	DDRD = 0xF0;			// PORTD(7:4) output, PORTD(3:0) input	
+	DDRD = 0xFF;			// PORTD(7) output, PORTD(6:0) input
 
-	// Init Interrupt hardware
-	EICRA |= 0x0B;			// INT1 falling edge, INT0 rising edge
-	EIMSK |= 0b0000011;//0x03;			// Enable INT1 & INT0
-	
-	// Enable global interrupt system
-	//SREG = 0x80;			// Of direct via SREG of via wrapper
-	sei();				
+	// Init LCD
+	init_4bits_mode();
 
-	//opdrachtB2();
-	opdrachtB3();
-	//opdrachtB4();
+	// Write sample string
+//	lcd_write_string("     a");
+	lcd_clear_screen();
+	//lcd_set_cursor(0, 9);
+	lcd_write_string("aa");
+	//lcd_write_command(0x18);
+	//lcd_set_cursor(1, 3);
+	//lcd_write_string("b");
+
+	// Loop forever
+	while (1)
+	{
+		//PORTD ^= (1<<7);	// Toggle PORTD.7
+		//_delay_ms( 250 );
+	}
 	//opdrachtB5();
 
 	while (1)
