@@ -82,6 +82,7 @@ void lcd_overwrite_line(char *str, int row) {
 	lcd_set_cursor(row, 0); //set cursor
 	lcd_write_string("                "); //clear line
 	lcd_set_cursor(row, 0); //set cursor back to start
+	//lcd_clear_screen();//
 	lcd_write_string(*str); //write new string
 }
 
