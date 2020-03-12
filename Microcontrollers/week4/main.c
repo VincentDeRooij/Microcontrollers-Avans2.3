@@ -15,7 +15,7 @@ int main(void)
 {
     /* Replace with your application code */
 	opdrachtB3();
-    while (1) 
+    while (1)
     {
 		
     }
@@ -50,7 +50,7 @@ void opdrachtB2() {
 		while (PINB > 0) {
 			//init adc
 			ADMUX = 0b01100011;			// AREF=VCC, result left adjusted, channel1 at pin PF3
-			//laatste 4 bits van admux zijn om PF te selcteren
+			//laatste 3 bits van admux zijn om PF te selcteren
 			ADCSRA = 0b11100110;		// ADC-enable, no interrupt, start, free running, division by 64
 			//PORTB = ADCL;			// Show MSB/LSB (bit 10:0) of ADC
 			PORTA = ADCH;
